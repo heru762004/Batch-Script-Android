@@ -2,7 +2,7 @@
 echo APK Uninstaller v1.0
 echo created by Heru Prasetia
 ECHO "%~1"
-set AAPT=<<path to aapt>>
+set AAPT=%ANDROID_HOME%\build-tools\21.1.1\aapt
 FOR %%i IN ("%~1") DO (
 SET filedrive=%%~di
 SET filepath=%%~pi
