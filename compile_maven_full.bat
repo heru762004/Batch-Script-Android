@@ -50,7 +50,7 @@ IF !p! gtr -1 (
 	for /L %%i in (0,1,!p!) do (
 		echo !vector[%%i]!
 		REM pause
-		CALL mvn clean install -P!vector[%%i]! -Dandroid.sdk.path="%ANDROID_HOME%" -Dsign.storepass=android -Dsign.keypass=android -Dsign.keystore="%mypath:~0,-1%\morpho-release-key.keystore" -Dsign.alias=morphokey -DapkType=!vector[%%i]! -Dapk.version=!apkversion!
+		CALL mvn clean install -P!vector[%%i]! -Dandroid.sdk.path="%ANDROID_HOME%" -Dsign.storepass=<<pass>> -Dsign.keypass=<<keypass>> -Dsign.keystore="%mypath:~0,-1%\<<keystore>>.keystore" -Dsign.alias=<<alias>> -DapkType=!vector[%%i]! -Dapk.version=!apkversion!
 		
 		REM read apk
 		for /d %%D in (*) do (
@@ -74,7 +74,7 @@ IF !p! gtr -1 (
 ) ELSE (
 	REM echo "does not have profile"
 	REM pause
-	CALL mvn clean install -Dandroid.sdk.path="%ANDROID_HOME%" -Dsign.storepass=android -Dsign.keypass=android -Dsign.keystore="%mypath:~0,-1%\morpho-release-key.keystore" -Dsign.alias=morphokey -DapkType=apk -Dapk.version=!apkversion!
+	CALL mvn clean install -Dandroid.sdk.path="%ANDROID_HOME%" -Dsign.storepass=<<pass>> -Dsign.keypass=<<keypass>> -Dsign.keystore="%mypath:~0,-1%\<<keystore>>.keystore" -Dsign.alias=<<alias>> -DapkType=!vector[%%i]! -Dapk.version=!apkversion!
 	
 	REM read apk
 	for /d %%D in (*) do (
